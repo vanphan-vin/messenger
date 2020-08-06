@@ -7,7 +7,7 @@ import { Grid } from "semantic-ui-react";
 import { connect } from "react-redux";
 
 const App = ({ currentUser }) => (
-    <Grid columns="equal" className="app" style={{ background: "#eee" }}>
+    <Grid columns="equal" className="app" style={{ background: "red" }}>
         <ColorPanel />
         <SidePanel currentUser={currentUser} />
 
