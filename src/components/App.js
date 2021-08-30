@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 
 const App = ({ currentUser }) => (
     <Grid columns="equal" className="app" style={{ background: "#eee" }}>
-        <ColorPanel />
+        {/* <ColorPanel /> */}
         <SidePanel currentUser={currentUser} />
 
         <Grid.Column style={{ marginLeft: 320 }}>

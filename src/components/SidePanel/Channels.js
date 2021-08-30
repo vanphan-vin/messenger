@@ -6,8 +6,8 @@ import { connect } from "react-redux";
 class Channels extends Component {
     state = {
         channels: [],
-        channelName: "",
-        channelDetails: "",
+        channelName: '',
+        channelDetails: '',
         channelRef: firebase.database().ref("channels"),
         modal: false,
     };
@@ -28,9 +28,7 @@ class Channels extends Component {
 
     openModal = () => this.setState({ modal: true });
 
-    handleChange = (e) => {
-        this.setState({ [e.target.name]: e.target.value });
-    };
+    handleChange = (e) => this.setState({ [e.target.name]: e.target.value })
 
     handleSubmit = (e) => {
         e.preventDefault();
@@ -39,27 +37,26 @@ class Channels extends Component {
         }
     };
 
-    formValidation = ({ channelName, channelDetails }) =>
-        channelName && channelDetails;
+    formValidation = ({ channelName, channelDetails }) => channelName && channelDetails
 
     addChannel = () => {
-        const user = this.props.presentUser;
-        const { channelRef, channelName, channelDetails } = this.state;
-        const key = channelRef.push().key;
+        const user = this.props.presentUser
+        const { channelRef, channelName, channelDetails } = this.state
+        const key = channelRef.push().key
         const newChannel = {
             id: key,
             name: channelName,
             datail: channelDetails,
             createdBy: {
                 name: user.displayName,
-                avatar: user.photoURL,
-            },
-        };
+                avatar: user.photoURL
+            }
+        }
         channelRef
             .child(key)
             .update(newChannel)
             .then(() => {
-                this.setState({ channelName: "", channelDetails: "" });
+                this.setState({ channelName: '', channelDetails: '' });
                 this.closeModal();
                 console.log("channel added");
             })
@@ -70,6 +67,8 @@ class Channels extends Component {
 
     changeChannel = (channel) => {
         // this.props.setCurrentChannel(channel)
+
+        console.log(channel);
     }
 
     displayChannels = (channels) =>
